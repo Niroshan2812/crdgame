@@ -9,7 +9,51 @@ const cardBackImagePath ='/images/card-back-Blue.png'
 
 const cardContannerElem = document.querySelector('.cardContanner')
 
-createCards()
+let cards =[]
+
+const playGameButtonElemt =document.getElementById('play-game')
+
+const collapsedGridAreaTemplate = '"a a" "a a"'
+const cardCollectionCellClass = ".cardPosA"
+loadGame()
+
+function loadGame(){
+    createCards()
+
+    cards =document.querySelectorAll('.card')
+
+    playGameButtonElemt.addEventListener('click',()=>startGame())
+
+}
+function startGame(){
+    initializeGame()
+    startRound()
+}
+function initializeGame(){
+
+}
+function startRound(){
+    initializeNewRound()
+    collectCards()
+}
+function initializeNewRound(){
+
+}
+function collectCards(){
+    transformGridArea(collapsedGridAreaTemplate)
+    addCardToGridCell(cardCollectionCellClass)
+}
+function transformGridArea(areas){
+    cardContannerElem.getElementsByClassName.gridTemplateAreas =areas
+}
+function addCardsToGridAreaCell(cellPositionClassName){
+    const cellPositionElem =document.querySelector(cellPositionClassName)
+
+    cards.forEach((card,index)=>{
+        addChiledElement(cellPositionElem,card)
+    })
+}
+
 function createCards(){
     cardOnjectDefinnitions.forEach((cardItem) =>{
         createCard(cardItem)
@@ -92,6 +136,7 @@ function addSrcToImageElement(imgElem, src){
     imgElem.src = src
 }
 function addChiledElement(parentElem, chiledElem){
+    
     parentElem.appendChild(chiledElem)
 }
 
