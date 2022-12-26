@@ -1,0 +1,81 @@
+:root{
+    --card-width:157px;
+    --card-height:228px;
+    --num-cards:4;
+    --card-horizontal-space:100px;
+}
+body{
+    height: 100vh;
+}
+main{
+    height: 55%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+.cardContanner{
+   
+    position: relative;
+    height: 100%;
+    width:calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "a b"
+                         "c d ";
+    border: 1px solid black;
+
+}
+.cardPosA{
+    grid-area: a;
+    border: 1px solid black;
+    background-color: gray;
+}
+.cardPosB{
+    grid-area: b;
+    border: 1px solid black;
+    background-color: goldenrod;
+}
+.cardPosC{
+    grid-area: c;
+    border: 1px solid black;
+    background-color: rosybrown;
+}
+.cardPosD{
+    grid-area: d;
+    border: 1px solid black;
+    background-color: darkcyan;
+}
+.card{
+position: absolute;
+height: var(--card-height) ;
+width: var(--card-width);
+perspective:1000px ;
+cursor: pointer;
+}
+.cardInner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+
+}
+.cardFront, .cardBack{
+position: absolute;
+width: 100%;
+height: 100%;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+.cardBack{
+transform: rotateY(180deg);
+}
+.cardImg{
+    height: 100%;
+
+}
+.card:hover .cardInner{
+    transform: rotateY(180deg);
+}
