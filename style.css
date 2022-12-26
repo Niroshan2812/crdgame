@@ -46,6 +46,11 @@ main{
     border: 1px solid black;
     background-color: darkcyan;
 }
+.cardPosA, .cardPosB, .cardPosC , .cardPosD{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .card{
 position: absolute;
 height: var(--card-height) ;

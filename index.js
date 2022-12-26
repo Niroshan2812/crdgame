@@ -9,6 +9,13 @@ const cardBackImagePath ='/images/card-back-Blue.png'
 
 const cardContannerElem = document.querySelector('.cardContanner')
 
+createCards()
+function createCards(){
+    cardOnjectDefinnitions.forEach((cardItem) =>{
+        createCard(cardItem)
+    })
+}
+
 function createCard(cardItem){
     //Create div elements that make up a card
     const cardElem = createElement('div')
@@ -22,6 +29,7 @@ function createCard(cardItem){
 
     //add class and id to card element
     addCardToElement(cardElem,'card')
+    addCardToElement(cardElem, 'fly-in')
     addIdToElement(cardElem, cardItem.id)
 
     //add class to inner card elemnt
@@ -34,16 +42,16 @@ function createCard(cardItem){
     addCardToElement(cardBackElem, 'cardBack')
 
     //add src attribute and appropriate value to img element - back card
-    addSrcToImageElement(cardBackElem,cardBackImagePath)
+    addSrcToImageElement(cardBackImg,cardBackImagePath)
 
     //add src attribute and appropriate value to img element - front card
-    addSrcToImageElement(cardFrontElem, cardItem.imagePath)
+    addSrcToImageElement(cardFrontImg, cardItem.imagePath)
 
     //assing class to front image element fro back card 
-    addCardToElement(cardBackElem,'cardImg')
+    addCardToElement(cardBackImg,'cardImg')
 
     //assing class to dront image element fro back card 
-    addCardToElement(cardFrontElem,'cardImg')
+    addCardToElement(cardFrontImg,'cardImg')
 
     //addchild front elem
     addChiledElement(cardFrontElem, cardFrontImg)
@@ -61,7 +69,10 @@ function createCard(cardItem){
      //add inner card element as child element
      addChiledElement(cardElem,cardInnerElem)
 
+     // add card element ss child element ro appropriate grid 
      
+     addCardToGridCell(cardElem)
+
 
 
 }
@@ -82,4 +93,24 @@ function addSrcToImageElement(imgElem, src){
 }
 function addChiledElement(parentElem, chiledElem){
     parentElem.appendChild(chiledElem)
+}
+
+function addCardToGridCell(card){
+    const cardPositionClassName =mapCardIdToGridCell(card)
+    const cardposElem = document.querySelector(cardPositionClassName)
+    addChiledElement(cardposElem,card)
+}
+function mapCardIdToGridCell(card){
+    if (card.id ==1){
+        return '.cardPosA'
+    }
+    else if (card.id ==2){
+        return '.cardPosB'
+    }
+    else if (card.id ==3){
+        return '.cardPosC'
+    }
+    else if (card.id ==4){
+        return '.cardPosD'
+    }
 }
